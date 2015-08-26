@@ -19,6 +19,8 @@ public class livelab_selenium {
 
         Random rand = new Random();
 
+        int country = 0;
+
         // load WebDriver
 
         WebDriver driver = new ChromeDriver();
@@ -30,8 +32,20 @@ public class livelab_selenium {
             System.setProperty("webdriver.chrome.driver","/home/maximilian/bin/chromedriver");
 
             // browse to url
-            driver.get("https://demo-itec.aau.at/livelab/bd_crowd_shaka_dif_bd_US/survey.php");
 
+            switch (country) {
+                case 0: driver.get("https://demo-itec.aau.at/livelab/bd_crowd_shaka_dif_bd_US/survey.php");
+                    country = 1;
+                    break;
+                case 1: driver.get("https://demo-itec.aau.at/livelab/bd_crowd_shaka_dif_bd_EE/survey.php");
+                    country = 2;
+                    break;
+                case 2: driver.get("https://demo-itec.aau.at/livelab/bd_crowd_shaka_dif_bd_WE/survey.php");
+                    country = 3;
+                    break;
+                case 3: driver.get("https://demo-itec.aau.at/livelab/bd_crowd_shaka_dif_bd_ASIA/survey.php");
+                    country = 0;
+            }
 
             // find element by name
             WebElement age = driver.findElement(By.name("age"));
